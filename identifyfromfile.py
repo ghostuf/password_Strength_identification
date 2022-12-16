@@ -32,20 +32,20 @@ def rank(psw):
             count += 1
             break
 
-    if count == 4 and (len(psw) > 10):
-        return " Strong_Password!"
-    elif count == 3 and (len(psw) >= 8 and len(psw) >= 10):
+    if count == 4 and len(psw) > 10:
+        return "Strong_Password!"
+    elif len(psw) >= 8 and len(psw) <= 10:
         return "Moderate_Password!"
-    elif count < 3 and len(psw) < 8:
+    elif len(psw) < 8:
         return "Weak_Password!"
 
-    if count == 3 and (len(psw) >= 8 and len(psw) >= 10):
+    if count == 3 and (len(psw) >= 8 and len(psw) <= 10):
         return "Moderate_Password!"
-    elif count < 3 and len(psw) < 8:
+    elif len(psw) < 8:
         return "Weak_Password!"
 
     else:
-        return "Weak_Password!"
+        return "Weak_password!"
 
 
 def option1():
