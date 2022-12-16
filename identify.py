@@ -9,61 +9,46 @@ symbols = string.punctuation
 
 
 def rank():
-    presence_lower = False
-    presence_upper = False
-    presence_number = False
-    presence_symbols = False
+
     count = 0
-    total = 0
 
-    for i in range(0, len(In_pass)):
-        for j in range(0, len(lower)):
-            if In_pass[i] == lower[j]:
-                presence_lower = True
+    for i in range(len(In_pass)):
+        if In_pass[i] in lower:
+            count += 1
+            break
 
-    if presence_lower:
-        count += 1
-        total += count
-        count = 0
+    for i in range(len(In_pass)):
+        if In_pass[i] in upper:
+            count += 1
+            break
 
-    for i in range(0, len(In_pass)):
-        for j in range(0, len(upper)):
-            if In_pass[i] == upper[j]:
-                presence_upper = True
+    for i in range(len(In_pass)):
+        if In_pass[i] in numbers:
+            count += 1
+            break
 
-    if presence_upper:
-        count += 1
-        total += count
-        count = 0
+    for i in range(len(In_pass)):
+        if In_pass[i] in symbols:
+            count += 1
+            break
 
-    for i in range(0, len(In_pass)):
-        for j in range(0, len(numbers)):
-            if In_pass[i] == numbers[j]:
-                presence_number = True
+    if count < 3:
+        if len(In_pass) < 8:
+            return "Weak Password!"
+        else:
+            return "Weak Password!"
 
-    if presence_number:
-        count += 1
-        total += count
-        count = 0
+    if count == 3:
+        if (len(In_pass) >= 8 and len(In_pass) <= 10):
+            return "Moderate Password!"
+        else:
+            return "Moderate Password!"
 
-    for i in range(0, len(In_pass)):
-        for j in range(0, len(symbols)):
-            if In_pass[i] == symbols[j]:
-                presence_symbols = True
-
-    if presence_symbols:
-        count += 1
-        total += count
-        count = 0
-
-    if total < 3 and len(In_pass) < 8:
-        return "POOR PASSWORD!"
-    elif total == 3 and (len(In_pass) >= 8 and len(In_pass) <= 10):
-        return "MID PASSWORD!"
-    elif total == 4 and (len(In_pass) > 10):
-        return "STRONG PASSWORD!"
-    else:
-        return "Bruh"
+    if count == 4:
+        if len(In_pass) > 10:
+            return "Strong Password!"
+        else:
+            return "Strong Password!"
 
 
 ranking = rank()
