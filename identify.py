@@ -32,23 +32,21 @@ def rank():
             count += 1
             break
 
-    if count < 3:
-        if len(In_pass) < 8:
-            return "Weak Password!"
-        else:
-            return "Weak Password!"
 
-    if count == 3:
-        if (len(In_pass) >= 8 and len(In_pass) <= 10):
-            return "Moderate Password!"
-        else:
-            return "Moderate Password!"
+    if count == 4 and len(In_pass) > 10:
+        return "Strong_Password!"
+    elif len(In_pass) >= 8 and len(In_pass) <= 10:
+        return "Moderate_Password!"
+    elif len(In_pass) < 8:
+        return "Weak_Password!"
 
-    if count == 4:
-        if len(In_pass) > 10:
-            return "Strong Password!"
-        else:
-            return "Strong Password!"
+    if count == 3 and (len(In_pass) >= 8 and len(In_pass) <= 10):
+        return "Moderate_Password!"
+    elif len(In_pass) < 8:
+        return "Weak_Password!"
+
+    else:
+        return "Weak_password!"
 
 
 ranking = rank()
